@@ -1,18 +1,33 @@
+
 package com.magistuarmory.block;
 
+import com.magistuarmory.EpicKnights;
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-public class ModBlockEntityTypes
-{
-    public static final BlockEntityType<PaviseBlockEntity> WOOD_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> GOLD_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> STONE_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> IRON_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> DIAMOND_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> NETHERITE_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> TIN_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> COPPER_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> SILVER_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> BRONZE_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
-    public static final BlockEntityType<PaviseBlockEntity> STEEL_PAVISE = (BlockEntityType<PaviseBlockEntity>) (BlockEntityType<?>) BlockEntityType.BANNER;
+public class ModBlockEntityTypes {
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(EpicKnights.ID, Registries.BLOCK_ENTITY_TYPE);
+
+    public static final RegistrySupplier<BlockEntityType<PaviseBlockEntity>> PAVISE = BLOCK_ENTITY_TYPES.register(
+        "pavise",
+        () -> BlockEntityType.Builder.of(PaviseBlockEntity::new,
+            ModBlocks.WOOD_PAVISE.get(),
+            ModBlocks.GOLD_PAVISE.get(),
+            ModBlocks.STONE_PAVISE.get(),
+            ModBlocks.IRON_PAVISE.get(),
+            ModBlocks.DIAMOND_PAVISE.get(),
+            ModBlocks.NETHERITE_PAVISE.get(),
+            ModBlocks.TIN_PAVISE.get(),
+            ModBlocks.COPPER_PAVISE.get(),
+            ModBlocks.SILVER_PAVISE.get(),
+            ModBlocks.BRONZE_PAVISE.get(),
+            ModBlocks.STEEL_PAVISE.get()
+        ).build(null)
+    );
+
+    public static void register() {
+        BLOCK_ENTITY_TYPES.register();
+    }
 }

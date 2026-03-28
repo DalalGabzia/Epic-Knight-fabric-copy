@@ -42,6 +42,7 @@ public class EpicKnights
         ModEffects.init();
         ModPackets.init();
         ModBlocks.register();
+        ModBlockEntityTypes.register();
         CommonEvents.init();
         if (Platform.getEnv() == EnvType.CLIENT)
         {
