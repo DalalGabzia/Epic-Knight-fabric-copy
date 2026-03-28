@@ -83,10 +83,9 @@ public class ModCreativeTabs
 		append(ARMOR, ModItems.CRUSADER_CHESTPLATE.get());
 		append(ARMOR, ModItems.CRUSADER_LEGGINGS.get());
 		append(ARMOR, ModItems.CRUSADER_BOOTS.get());
-		// if (Platform.isFabric())
-		//     append(ARMOR, CEREMONIAL_ARMET_WITH_PLUME_SUPPLIER.get());
-		else
-			append(ARMOR, ModItems.CEREMONIAL_ARMET.get());
+				// if (Platform.isFabric())
+				//     append(ARMOR, CEREMONIAL_ARMET_WITH_PLUME_SUPPLIER.get());
+				append(ARMOR, ModItems.CEREMONIAL_ARMET.get());
 		append(ARMOR, ModItems.CEREMONIAL_CHESTPLATE.get());
 		append(ARMOR, ModItems.CEREMONIAL_BOOTS.get());
 		append(ARMOR, ModItems.COIF.get());
