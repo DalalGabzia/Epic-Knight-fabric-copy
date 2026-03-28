@@ -48,8 +48,8 @@ processResources {
     def authorsList      = rawAuthors.split(",")*.trim().findAll { it }
     def contributorsList = rawContributors.split(",")*.trim().findAll { it }
 
-    def authorsArray      = JsonOutput.toJson(authorsList)
-    def contributorsArray = JsonOutput.toJson(contributorsList)
+    def authorsArray      = authorsList.collect { it.replace('"', '\\"') }.join('","')
+    def contributorsArray = contributorsList.collect { it.replace('"', '\\"') }.join('","')
 
     def expandProps = [
             "mod_id"                    : (project.findProperty("mod_id") ?: "").toString(),
