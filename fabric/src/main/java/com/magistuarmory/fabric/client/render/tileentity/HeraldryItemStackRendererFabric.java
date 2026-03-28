@@ -17,7 +17,6 @@ public class HeraldryItemStackRendererFabric extends HeraldryItemStackRenderer
 		super(id, location);
 	}
 
-	@Override
 	public void render(ItemStack stack, ItemDisplayContext mode, PoseStack matrices, MultiBufferSource vertexConsumers, int p, int overlay)
 	{
 		super.renderByItem(stack, mode, matrices, vertexConsumers, p, overlay);
