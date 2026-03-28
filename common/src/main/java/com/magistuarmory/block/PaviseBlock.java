@@ -41,29 +41,30 @@ import org.joml.Vector3d;
 import java.util.function.Supplier;
 
 
+
 public class PaviseBlock extends AbstractBannerBlock
 {
-	public static final IntegerProperty ROTATION;
-	static final AABB COLLISION_AABB = new AABB(0.0 / 16.0, 0.0, 7.5 / 16.0, 1.0, 1.0, 8.5 / 16.0);
-	static final Vector3d CENTER = new Vector3d(0.5, 0.5, 0.5);
-	static final Vector3d BOXMIN = new Vector3d(0.0, 0.0, 0.0);
-	static final Vector3d BOXMAX = new Vector3d(1.0, 1.0, 1.0);
-	
-	public final MapCodec<PaviseBlock> codec;
-	private final BlockEntityType<PaviseBlockEntity> entityType;
-	protected String shieldId;
-	
-	public PaviseBlock(DyeColor color, Properties prop, String shieldId, BlockEntityType<PaviseBlockEntity> entityType)
-	{
-		super(color, prop);
-		this.shieldId = shieldId;
-		this.entityType = entityType;
-		this.codec = RecordCodecBuilder.mapCodec((instance) -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(AbstractBannerBlock::getColor), propertiesCodec()).apply(instance, (a, b) -> new PaviseBlock(a, b, shieldId, entityType)));
-	}
-	
-	public BlockEntityType<PaviseBlockEntity> getEntityType() {
-		return this.entityType;
-	}
+    public static final IntegerProperty ROTATION;
+    static final AABB COLLISION_AABB = new AABB(0.0 / 16.0, 0.0, 7.5 / 16.0, 1.0, 1.0, 8.5 / 16.0);
+    static final Vector3d CENTER = new Vector3d(0.5, 0.5, 0.5);
+    static final Vector3d BOXMIN = new Vector3d(0.0, 0.0, 0.0);
+    static final Vector3d BOXMAX = new Vector3d(1.0, 1.0, 1.0);
+
+    public final MapCodec<PaviseBlock> codec;
+    private final Supplier<BlockEntityType<PaviseBlockEntity>> entityTypeSupplier;
+    protected String shieldId;
+
+    public PaviseBlock(DyeColor color, Properties prop, String shieldId, Supplier<BlockEntityType<PaviseBlockEntity>> entityTypeSupplier)
+    {
+        super(color, prop);
+        this.shieldId = shieldId;
+        this.entityTypeSupplier = entityTypeSupplier;
+        this.codec = RecordCodecBuilder.mapCodec((instance) -> instance.group(DyeColor.CODEC.fieldOf("color").forGetter(AbstractBannerBlock::getColor), propertiesCodec()).apply(instance, (a, b) -> new PaviseBlock(a, b, shieldId, entityTypeSupplier)));
+    }
+
+    public BlockEntityType<PaviseBlockEntity> getEntityType() {
+        return this.entityTypeSupplier.get();
+    }
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -76,10 +77,11 @@ public class PaviseBlock extends AbstractBannerBlock
 		return this.codec;
 	}
 
+
 	@Override
 	public BlockEntity newBlockEntity(BlockPos blockpos, BlockState blockstate) 
 	{
-		return new PaviseBlockEntity(this.entityType, blockpos, blockstate);
+		return new PaviseBlockEntity(this.getEntityType(), blockpos, blockstate);
 	}
 	
 	@Override

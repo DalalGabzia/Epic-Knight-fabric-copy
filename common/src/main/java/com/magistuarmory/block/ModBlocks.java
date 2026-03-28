@@ -30,17 +30,17 @@ public class ModBlocks {
 				.ignitedByLava();
 	}
 
-	public static final RegistrySupplier<Block> WOOD_PAVISE = BLOCKS.register("wood_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "wood_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> GOLD_PAVISE = BLOCKS.register("gold_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "gold_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> STONE_PAVISE = BLOCKS.register("stone_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "stone_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> IRON_PAVISE = BLOCKS.register("iron_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "iron_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> DIAMOND_PAVISE = BLOCKS.register("diamond_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "diamond_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> NETHERITE_PAVISE = BLOCKS.register("netherite_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "netherite_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> TIN_PAVISE = BLOCKS.register("tin_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "tin_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> COPPER_PAVISE = BLOCKS.register("copper_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "copper_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> SILVER_PAVISE = BLOCKS.register("silver_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "silver_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> BRONZE_PAVISE = BLOCKS.register("bronze_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "bronze_pavise", ModBlockEntityTypes.PAVISE.get()));
-	public static final RegistrySupplier<Block> STEEL_PAVISE = BLOCKS.register("steel_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "steel_pavise", ModBlockEntityTypes.PAVISE.get()));
+	public static final RegistrySupplier<Block> WOOD_PAVISE = BLOCKS.register("wood_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "wood_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> GOLD_PAVISE = BLOCKS.register("gold_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "gold_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> STONE_PAVISE = BLOCKS.register("stone_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "stone_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> IRON_PAVISE = BLOCKS.register("iron_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "iron_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> DIAMOND_PAVISE = BLOCKS.register("diamond_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "diamond_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> NETHERITE_PAVISE = BLOCKS.register("netherite_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "netherite_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> TIN_PAVISE = BLOCKS.register("tin_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "tin_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> COPPER_PAVISE = BLOCKS.register("copper_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "copper_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> SILVER_PAVISE = BLOCKS.register("silver_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "silver_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> BRONZE_PAVISE = BLOCKS.register("bronze_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "bronze_pavise", ModBlockEntityTypes.PAVISE));
+	public static final RegistrySupplier<Block> STEEL_PAVISE = BLOCKS.register("steel_pavise", () -> new PaviseBlock(DyeColor.WHITE, bannerProperties(), "steel_pavise", ModBlockEntityTypes.PAVISE));
 
 	public static final RegistrySupplier<Block> PAVISE_UPPER_COLLISION = BLOCKS.register("pavise_upper_collision", PaviseUpperCollisionBlock::new);
 

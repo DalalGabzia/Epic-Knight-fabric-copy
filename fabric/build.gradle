@@ -5,10 +5,10 @@ plugins {
     id "com.hypherionmc.modutils.modpublisher" version "2.1.8"
 }
 
-architectury {
-    platformSetupLoomIde()
-    fabric()
-}
+//architectury {
+//    platformSetupLoomIde()
+//    fabric()
+//}
 
 loom {
 }
