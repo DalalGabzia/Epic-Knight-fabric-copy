@@ -104,77 +104,9 @@ Epic Knights provides a configuration system via [Cloth Config](https://modrinth
 
 Access configuration in-game via Mod Menu or edit the JSON file directly.
 
-## Addon Development
+## Port Status
 
-Epic Knights includes a powerful addon system that allows third-party mods to extend it with custom items, blocks, recipes, and more.
-
-### Quick Addon Example
-
-```java
-package io.example.epicknightssample;
-
-import com.magistuarmory.addon.Addon;
-import com.magistuarmory.addon.AddonRegistry;
-import com.magistuarmory.addon.AddonClientRegistry;
-import net.minecraft.world.item.Item;
-
-public class SampleAddon implements Addon {
-    
-    @Override
-    public String getAddonId() {
-        return "example:sample";
-    }
-    
-    @Override
-    public String getAddonName() {
-        return "Example Sample Addon";
-    }
-    
-    @Override
-    public String getAddonVersion() {
-        return "1.0.0";
-    }
-    
-    @Override
-    public void onRegisterContent(AddonRegistry registry) {
-        // Register your custom items and blocks here
-        Item customSword = new Item(new Item.Properties());
-        registry.registerItem("custom_sword", customSword);
-    }
-    
-    @Override
-    public void onClientInit(AddonClientRegistry clientRegistry) {
-        // Register client-side content here (models, textures, etc.)
-    }
-    
-    @Override
-    public void onServerStart(AddonRegistry registry) {
-        // Setup server-side logic
-    }
-}
-```
-
-### Register Your Addon
-
-Create a file in your addon JAR at:
-```
-META-INF/services/com.magistuarmory.addon.Addon
-```
-
-Add your addon class name:
-```
-io.example.epicknightssample.SampleAddon
-```
-
-### Full Addon Guide
-
-See [`ADDON_DEVELOPMENT.md`](./ADDON_DEVELOPMENT.md) for detailed documentation on:
-- Registering items, blocks, and recipes
-- Working with armor and weapons
-- Creating custom models and textures
-- Server-side and client-side initialization
-- Error handling and logging
-- Publishing your addon
+This branch is a direct Fabric 1.21.4 port of the original Epic Knights source and asset content. It does not include built-in addon hooks or an internal addon system.
 
 ## Contributing
 

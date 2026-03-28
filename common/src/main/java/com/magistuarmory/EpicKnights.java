@@ -1,6 +1,5 @@
 package com.magistuarmory;
 
-import com.magistuarmory.addon.AddonLoader;
 import com.magistuarmory.block.ModBlockEntityTypes;
 import com.magistuarmory.block.ModBlocks;
 import com.magistuarmory.client.render.model.ModModels;
@@ -55,9 +54,6 @@ public class EpicKnights
         ModRecipes.init();
         ModCreativeTabs.init();
         ModReloadListenerRegistry.init();
-        
-        // Load addons after all mod content is registered
-        AddonLoader.loadAddons();
     }
     
     public static void checkBetterCombatOrEpicFightInstalled()

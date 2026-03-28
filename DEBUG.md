@@ -306,15 +306,6 @@ To identify performance bottlenecks:
 
 Use Java Flight Recorder or YourKit for detailed profiling.
 
-### Tracing Addon Loading
-
-Enable extra logging for addon system:
-
-```bash
-# In your launcher's JVM args
--Dcom.magistuarmory.addon.debug=true
-```
-
 ## Getting Help
 
 - **GitHub Issues**: [Report a bug](https://github.com/phantomhivealice200-stack/Epic-Knights_v1.21.4/issues)

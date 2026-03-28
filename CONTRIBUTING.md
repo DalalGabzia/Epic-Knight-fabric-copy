@@ -88,8 +88,8 @@ public Item registerItem(String name, Item item) {
 # Run all tests
 ./gradlew test
 
-# Run specific test
-./gradlew test --tests AddonLoaderTest
+# Run specific tests
+./gradlew test --tests "**/*Test"
 
 # Build the project
 ./gradlew clean build
@@ -150,8 +150,8 @@ Your PR should:
 Examples of good PR titles:
 - `feat: add new shield variants for 1.21.4`
 - `fix: resolve armor rendering bug on specific models`
-- `docs: update addon development guide with examples`
-- `test: improve coverage for AddonLoader`
+- `docs: update README or DEBUG guide`
+- `test: improve coverage for core systems`
 
 ## Development Guidelines
 
@@ -162,22 +162,12 @@ Good first contributions:
 - 📝 Documentation improvements
 - ✅ Writing unit tests
 - 🎨 Code style/organization improvements
-- 🔧 Addon examples and documentation
+- 🔧 Integration support and compatibility
 
 Before starting larger features:
 - 💬 Discuss in an issue first
 - Get approval from maintainers
 - Outline your approach
-
-### Addon Development
-
-If you're developing an addon:
-
-1. Follow [ADDON_DEVELOPMENT.md](./ADDON_DEVELOPMENT.md)
-2. Place addon code in `examples/addon-*` directory
-3. Include comprehensive documentation
-4. Test thoroughly with Epic Knights
-5. Submit as example or separate repository
 
 ### Documentation
 
