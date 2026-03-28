@@ -12,7 +12,8 @@ public class ModBlockEntityTypes {
 
     public static final RegistrySupplier<BlockEntityType<PaviseBlockEntity>> PAVISE = BLOCK_ENTITY_TYPES.register(
         "pavise",
-        () -> BlockEntityType.Builder.of(PaviseBlockEntity::new,
+        () -> BlockEntityType.create(
+            PaviseBlockEntity::new,
             ModBlocks.WOOD_PAVISE.get(),
             ModBlocks.GOLD_PAVISE.get(),
             ModBlocks.STONE_PAVISE.get(),
@@ -24,7 +25,7 @@ public class ModBlockEntityTypes {
             ModBlocks.SILVER_PAVISE.get(),
             ModBlocks.BRONZE_PAVISE.get(),
             ModBlocks.STEEL_PAVISE.get()
-        ).build(null)
+        )
     );
 
     public static void register() {
