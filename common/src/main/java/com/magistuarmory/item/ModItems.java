@@ -8,6 +8,7 @@ import com.magistuarmory.config.WeaponsConfig;
 import com.magistuarmory.item.armor.*;
 import com.magistuarmory.misc.ModBannerPatternTags;
 import dev.architectury.platform.Platform;
+import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.annotation.Nullable;
 import net.minecraft.network.chat.Component;
@@ -19,45 +20,47 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.List;
 import java.util.function.BiFunction;
 
-public class ModItems extends ModItemsProvider
-{
+public class ModItems extends ModItemsProvider {
 	private static final WeaponsConfig WEAPONS_CONFIG = EpicKnights.CONFIG.weapons;
 	private static final ShieldsConfig SHIELDS_CONFIG = EpicKnights.CONFIG.shields;
 
 	public static ModItems INSTANCE = new ModItems();
 
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(EpicKnights.ID, net.minecraft.core.registries.Registries.ITEM);
+
+	// Armor
+	public static final RegistrySupplier<Item> ARMET = ITEMS.register("armet", () -> new KnightItem(ArmorTypes.ARMET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
+	public static final RegistrySupplier<Item> KNIGHT_CHESTPLATE = ITEMS.register("knight_chestplate", () -> new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
+	public static final RegistrySupplier<Item> KNIGHT_LEGGINGS = ITEMS.register("knight_leggings", () -> new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
+	public static final RegistrySupplier<Item> KNIGHT_BOOTS = ITEMS.register("knight_boots", () -> new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+
+	public static final RegistrySupplier<Item> STECHHELM = ITEMS.register("stechhelm", () -> new MedievalArmorItem(ArmorTypes.STECHHELM, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
+	public static final RegistrySupplier<Item> JOUSTING_CHESTPLATE = ITEMS.register("jousting_chestplate", () -> new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
+	public static final RegistrySupplier<Item> JOUSTING_LEGGINGS = ITEMS.register("jousting_leggings", () -> new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
+	public static final RegistrySupplier<Item> JOUSTING_BOOTS = ITEMS.register("jousting_boots", () -> new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+
+	public static final RegistrySupplier<Item> SALLET = ITEMS.register("sallet", () -> new MedievalArmorItem(ArmorTypes.SALLET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
+	public static final RegistrySupplier<Item> GOTHIC_CHESTPLATE = ITEMS.register("gothic_chestplate", () -> new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
+	public static final RegistrySupplier<Item> GOTHIC_LEGGINGS = ITEMS.register("gothic_leggings", () -> new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
+	public static final RegistrySupplier<Item> GOTHIC_BOOTS = ITEMS.register("gothic_boots", () -> new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+
+	public static final RegistrySupplier<Item> MAXIMILIAN_HELMET = ITEMS.register("maximilian_helmet", () -> new MedievalArmorItem(ArmorTypes.MAXIMILIAN_HELMET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
+	public static final RegistrySupplier<Item> MAXIMILIAN_CHESTPLATE = ITEMS.register("maximilian_chestplate", () -> new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
+	public static final RegistrySupplier<Item> MAXIMILIAN_LEGGINGS = ITEMS.register("maximilian_leggings", () -> new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
+	public static final RegistrySupplier<Item> MAXIMILIAN_BOOTS = ITEMS.register("maximilian_boots", () -> new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+
+	public static final RegistrySupplier<Item> CHAINMAIL_HELMET = ITEMS.register("chainmail_helmet", () -> new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
+	public static final RegistrySupplier<Item> CHAINMAIL_CHESTPLATE = ITEMS.register("chainmail_chestplate", () -> new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
+	public static final RegistrySupplier<Item> CHAINMAIL_LEGGINGS = ITEMS.register("chainmail_leggings", () -> new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
+	public static final RegistrySupplier<Item> CHAINMAIL_BOOTS = ITEMS.register("chainmail_boots", () -> new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+
 	public ModItems() {
 		super(EpicKnights.ID);
 	}
 
-	//Armor
-	   public static final Item ARMET = registerItem("armet", new KnightItem(ArmorTypes.ARMET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
-	   public static final Item KNIGHT_CHESTPLATE = registerItem("knight_chestplate", new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
-	   public static final Item KNIGHT_LEGGINGS = registerItem("knight_leggings", new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
-	   public static final Item KNIGHT_BOOTS = registerItem("knight_boots", new MedievalArmorItem(ArmorTypes.KNIGHT, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
-
-	   private static Item registerItem(String name, Item item) {
-		   return net.minecraft.core.registries.BuiltinRegistries.ITEM.register(ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, name), item);
-	   }
-	   public static final Item STECHHELM = registerItem("stechhelm", new MedievalArmorItem(ArmorTypes.STECHHELM, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
-	   public static final Item JOUSTING_CHESTPLATE = registerItem("jousting_chestplate", new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
-	   public static final Item JOUSTING_LEGGINGS = registerItem("jousting_leggings", new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
-	   public static final Item JOUSTING_BOOTS = registerItem("jousting_boots", new MedievalArmorItem(ArmorTypes.JOUSTING, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
-
-	   public static final Item SALLET = registerItem("sallet", new MedievalArmorItem(ArmorTypes.SALLET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
-	   public static final Item GOTHIC_CHESTPLATE = registerItem("gothic_chestplate", new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
-	   public static final Item GOTHIC_LEGGINGS = registerItem("gothic_leggings", new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
-	   public static final Item GOTHIC_BOOTS = registerItem("gothic_boots", new MedievalArmorItem(ArmorTypes.GOTHIC, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
-
-	   public static final Item MAXIMILIAN_HELMET = registerItem("maximilian_helmet", new MedievalArmorItem(ArmorTypes.MAXIMILIAN_HELMET, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
-	   public static final Item MAXIMILIAN_CHESTPLATE = registerItem("maximilian_chestplate", new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
-	   public static final Item MAXIMILIAN_LEGGINGS = registerItem("maximilian_leggings", new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
-	   public static final Item MAXIMILIAN_BOOTS = registerItem("maximilian_boots", new MedievalArmorItem(ArmorTypes.MAXIMILIAN, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
-
-	   public static final Item CHAINMAIL_HELMET = registerItem("chainmail_helmet", new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
-	   public static final Item CHAINMAIL_CHESTPLATE = registerItem("chainmail_chestplate", new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
-	   public static final Item CHAINMAIL_LEGGINGS = registerItem("chainmail_leggings", new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.LEGGINGS, new Item.Properties()));
-	   public static final Item CHAINMAIL_BOOTS = registerItem("chainmail_boots", new MedievalArmorItem(ArmorTypes.CHAINMAIL, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
+	public static void register() {
+		ITEMS.register();
+	}
 
 	public static final Item KETTLEHAT = register("kettlehat", new MedievalArmorItem(ArmorTypes.KETTLEHAT, net.minecraft.world.item.equipment.ArmorType.HELMET, new Item.Properties()));
 	public static final Item PLATEMAIL_CHESTPLATE = register("platemail_chestplate", new MedievalArmorItem(ArmorTypes.PLATEMAIL, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));

@@ -2,7 +2,8 @@ package com.magistuarmory.block;
 
 import com.magistuarmory.EpicKnights;
 import com.magistuarmory.item.ModItemTier;
-import net.minecraft.core.Registry;
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
@@ -12,29 +13,25 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Supplier;
 
-public class ModBlocks
-{
+public class ModBlocks {
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(EpicKnights.ID, Registries.BLOCK);
 
-		private static Block registerBlock(String name, Block block) {
-			return Registry.register(net.minecraft.core.registries.BuiltinRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, name), block);
-		}
+	public static final RegistrySupplier<Block> WOOD_PAVISE = BLOCKS.register("wood_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "wood_pavise", ModBlockEntityTypes.WOOD_PAVISE));
+	public static final RegistrySupplier<Block> GOLD_PAVISE = BLOCKS.register("gold_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "gold_pavise", ModBlockEntityTypes.GOLD_PAVISE));
+	public static final RegistrySupplier<Block> STONE_PAVISE = BLOCKS.register("stone_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "stone_pavise", ModBlockEntityTypes.STONE_PAVISE));
+	public static final RegistrySupplier<Block> IRON_PAVISE = BLOCKS.register("iron_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "iron_pavise", ModBlockEntityTypes.IRON_PAVISE));
+	public static final RegistrySupplier<Block> DIAMOND_PAVISE = BLOCKS.register("diamond_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "diamond_pavise", ModBlockEntityTypes.DIAMOND_PAVISE));
+	public static final RegistrySupplier<Block> NETHERITE_PAVISE = BLOCKS.register("netherite_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "netherite_pavise", ModBlockEntityTypes.NETHERITE_PAVISE));
+	public static final RegistrySupplier<Block> TIN_PAVISE = BLOCKS.register("tin_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "tin_pavise", ModBlockEntityTypes.TIN_PAVISE));
+	public static final RegistrySupplier<Block> COPPER_PAVISE = BLOCKS.register("copper_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "copper_pavise", ModBlockEntityTypes.COPPER_PAVISE));
+	public static final RegistrySupplier<Block> SILVER_PAVISE = BLOCKS.register("silver_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "silver_pavise", ModBlockEntityTypes.SILVER_PAVISE));
+	public static final RegistrySupplier<Block> BRONZE_PAVISE = BLOCKS.register("bronze_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "bronze_pavise", ModBlockEntityTypes.BRONZE_PAVISE));
+	public static final RegistrySupplier<Block> STEEL_PAVISE = BLOCKS.register("steel_pavise", () -> new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "steel_pavise", ModBlockEntityTypes.STEEL_PAVISE));
 
-	public static final Block WOOD_PAVISE = register("wood_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "wood_pavise", ModBlockEntityTypes.WOOD_PAVISE));
-	public static final Block GOLD_PAVISE = register("gold_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "gold_pavise", ModBlockEntityTypes.GOLD_PAVISE));
-	public static final Block STONE_PAVISE = register("stone_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "stone_pavise", ModBlockEntityTypes.STONE_PAVISE));
-	public static final Block IRON_PAVISE = register("iron_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "iron_pavise", ModBlockEntityTypes.IRON_PAVISE));
-	public static final Block DIAMOND_PAVISE = register("diamond_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "diamond_pavise", ModBlockEntityTypes.DIAMOND_PAVISE));
-	public static final Block NETHERITE_PAVISE = register("netherite_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "netherite_pavise", ModBlockEntityTypes.NETHERITE_PAVISE));
-	public static final Block TIN_PAVISE = register("tin_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "tin_pavise", ModBlockEntityTypes.TIN_PAVISE));
-	public static final Block COPPER_PAVISE = register("copper_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "copper_pavise", ModBlockEntityTypes.COPPER_PAVISE));
-	public static final Block SILVER_PAVISE = register("silver_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "silver_pavise", ModBlockEntityTypes.SILVER_PAVISE));
-	public static final Block BRONZE_PAVISE = register("bronze_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "bronze_pavise", ModBlockEntityTypes.BRONZE_PAVISE));
-	public static final Block STEEL_PAVISE = register("steel_pavise", new PaviseBlock(DyeColor.WHITE, BlockBehaviour.Properties.of().dynamicShape().noTerrainParticles().sound(SoundType.WOOD).ignitedByLava(), "steel_pavise", ModBlockEntityTypes.STEEL_PAVISE));
-	
-	public static final Block PAVISE_UPPER_COLLISION = register("pavise_upper_collision", new PaviseUpperCollisionBlock());
-	
-	public static void init() {
-		// Trigger class loading for static block registration
+	public static final RegistrySupplier<Block> PAVISE_UPPER_COLLISION = BLOCKS.register("pavise_upper_collision", PaviseUpperCollisionBlock::new);
+
+	public static void register() {
+		BLOCKS.register();
 	}
 
 	public static PaviseBlock getPaviseByMaterialName(ModItemTier material)

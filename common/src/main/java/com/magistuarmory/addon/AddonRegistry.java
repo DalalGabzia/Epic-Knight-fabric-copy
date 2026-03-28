@@ -11,32 +11,33 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
  * Registry for addon content like items and blocks.
  * Use this to register your custom items, blocks, and other content.
  */
+import dev.architectury.registry.registries.RegistrySupplier;
+
 public interface AddonRegistry {
-    
     /**
      * Registers a custom item.
      * @param name the item name (namespace is handled automatically)
      * @param item the Item instance
-     * @return the registered item
+     * @return the registered item supplier
      */
-    Item registerItem(String name, Item item);
-    
+    RegistrySupplier<Item> registerItem(String name, Item item);
+
     /**
      * Registers a custom block.
      * @param name the block name (namespace is handled automatically)
      * @param block the Block instance
-     * @return the registered block
+     * @return the registered block supplier
      */
-    Block registerBlock(String name, Block block);
-    
+    RegistrySupplier<Block> registerBlock(String name, Block block);
+
     /**
      * Registers a block with an associated block entity.
      * @param name the block name
      * @param block the Block instance
      * @param blockEntityName the block entity name
-     * @return the registered block
+     * @return the registered block supplier
      */
-    Block registerBlockWithEntity(String name, Block block, String blockEntityName);
+    RegistrySupplier<Block> registerBlockWithEntity(String name, Block block, String blockEntityName);
     
     /**
      * Gets the namespace/mod id of this addon's registrations.
