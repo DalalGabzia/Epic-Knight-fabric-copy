@@ -133,7 +133,7 @@ public class HeraldryRecipe extends CustomRecipe
         if (item instanceof MedievalArmorItem armorItem)
         {
             return (EpicKnights.GENERAL_CONFIG.enableSurcoatRecipeForAllArmor || item instanceof ISurcoat) && 
-                   armorItem.getEquipmentSlot().equals(EquipmentSlot.CHEST);
+                   armorItem.getType().getSlot() == EquipmentSlot.CHEST;
         }
         return false;
     }

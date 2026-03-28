@@ -13,6 +13,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.annotation.Nullable;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.SmithingTemplateItem;
@@ -129,8 +130,8 @@ public class ModItems extends ModItemsProvider {
 	public static final RegistrySupplier<Item> LAMELLAR_CHESTPLATE = ITEMS.register("lamellar_chestplate", () -> new MedievalArmorItem(ArmorTypes.LAMELLAR, net.minecraft.world.item.equipment.ArmorType.CHESTPLATE, new Item.Properties()));
 	public static final RegistrySupplier<Item> LAMELLAR_BOOTS = ITEMS.register("lamellar_boots", () -> new MedievalArmorItem(ArmorTypes.LAMELLAR, net.minecraft.world.item.equipment.ArmorType.BOOTS, new Item.Properties()));
 
-	public static final RegistrySupplier<Item> BARDING = ITEMS.register("barding", () -> new MedievalHorseArmorItem(ArmorMaterials.DIAMOND, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "textures/entity/horse/armor/barding.png"), false, new Item.Properties().stacksTo(1)));
-	public static final RegistrySupplier<Item> CHAINMAIL_HORSE_ARMOR = ITEMS.register("chainmail_horse_armor", () -> new MedievalHorseArmorItem(ArmorMaterials.IRON, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "textures/entity/horse/armor/horse_armor_chainmail.png"), false, new Item.Properties().stacksTo(1)));
+	public static final RegistrySupplier<Item> BARDING = ITEMS.register("barding", () -> new MedievalHorseArmorItem(Holder.direct(ArmorMaterials.DIAMOND), ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "textures/entity/horse/armor/barding.png"), false, new Item.Properties().stacksTo(1)));
+	public static final RegistrySupplier<Item> CHAINMAIL_HORSE_ARMOR = ITEMS.register("chainmail_horse_armor", () -> new MedievalHorseArmorItem(Holder.direct(ArmorMaterials.IRON), ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "textures/entity/horse/armor/horse_armor_chainmail.png"), false, new Item.Properties().stacksTo(1)));
 
 	public static final BiFunction<ModItemTier, Properties, RegistrySupplier<MedievalShieldItem>> HEATER_SHIELD_SUPPLY = (material, prop) -> INSTANCE.addMedievalShieldItem(material.getMaterialName() + "_heatershield", "heatershield", prop, material, true, true, SHIELDS_CONFIG.get("heaterShield"));
 	public static final BiFunction<ModItemTier, Properties, RegistrySupplier<MedievalShieldItem>> TARGET_SUPPLY = (material, prop) -> INSTANCE.addMedievalShieldItem(material.getMaterialName() + "_target", "target", prop, material, false, true, SHIELDS_CONFIG.get("target"));
@@ -248,7 +249,6 @@ public class ModItems extends ModItemsProvider {
 			Component.translatable(EpicKnights.ID + ".darkening_template.ingredients"),
 			Component.translatable(EpicKnights.ID + ".darkening_template.upgrade_description"),
 			Component.translatable(EpicKnights.ID + ".darkening_template.base_slot_description"),
-			Component.translatable(EpicKnights.ID + ".darkening_template.additions_slot_description"),
 			List.<ResourceLocation>of(),
 			List.<ResourceLocation>of(),
 			new Properties()));
@@ -257,7 +257,6 @@ public class ModItems extends ModItemsProvider {
 			Component.translatable(EpicKnights.ID + ".gilding_template.ingredients"),
 			Component.translatable(EpicKnights.ID + ".gilding_template.upgrade_description"),
 			Component.translatable(EpicKnights.ID + ".gilding_template.base_slot_description"),
-			Component.translatable(EpicKnights.ID + ".gilding_template.additions_slot_description"),
 			List.<ResourceLocation>of(),
 			List.<ResourceLocation>of(),
 			new Properties()));

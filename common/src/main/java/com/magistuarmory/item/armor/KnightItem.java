@@ -51,3 +51,5 @@ public class KnightItem extends MedievalArmorItem implements ISurcoat, DyeableIt
 	public void registerModelProperty()
 	{
 		// Model property registration moved or disabled for Fabric 1.21.4.
+	}
+}
