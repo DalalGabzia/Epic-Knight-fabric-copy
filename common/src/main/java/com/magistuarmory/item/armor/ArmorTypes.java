@@ -136,7 +136,7 @@ private static Ingredient ingredientFromTag(TagKey<Item> tag)
 								   ArmorConfig.ArmorTypeConfig config,
 								   Holder<SoundEvent> equipSound,
 								   boolean dyeable) {
-		return new ArmorType(location, modelLocation, config.toughness, config.knockbackResistance, new Integer[] {config.bootsDurability, config.leggingsDurability, config.chestplateDurability, config.helmetDurability}, new Integer[] {config.bootsDefense, config.leggingsDefense, config.chestplateDefense, config.helmetDefense}, config.enchantmentValue, equipSound, dyeable, config.enabled, () -> Ingredient.EMPTY);
+		return new ArmorType(location, modelLocation, config.toughness, config.knockbackResistance, new Integer[] {config.bootsDurability, config.leggingsDurability, config.chestplateDurability, config.helmetDurability}, new Integer[] {config.bootsDefense, config.leggingsDefense, config.chestplateDefense, config.helmetDefense}, config.enchantmentValue, equipSound, dyeable, config.enabled, () -> Ingredient.of());
 	}
 
 	public static void init() {
