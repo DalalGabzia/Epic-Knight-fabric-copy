@@ -19,7 +19,6 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -37,44 +36,17 @@ import java.util.Map;
 @Environment(EnvType.CLIENT)
 public class ModRenderImpl
 {
-	private static final Map<LivingEntityRenderer<?, ?>, ArmorDecorationLayer<?, ?>> ARMOR_DECORATION_LAYERS = new HashMap<>();
-	private static final Map<LivingEntityRenderer<?, ?>, HorseArmorDecorationLayer> HORSE_ARMOR_DECORATION_LAYERS = new HashMap<>();
-
-	static <T extends LivingEntity, M extends HumanoidModel<T>> void addLayers(ModItemsProvider content, EntityType<? extends LivingEntity> entitytype, LivingEntityRenderer<?, ?> renderer, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper, EntityRendererProvider.Context context)
+	static void addLayers(ModItemsProvider content, EntityType<? extends LivingEntity> entitytype, LivingEntityRenderer<?, ?, ?> renderer, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper, EntityRendererProvider.Context context)
 	{
-		if (content.armorDecorationItems.isEmpty())
-			return;
-
-		if (renderer.getModel() instanceof HumanoidModel) {
-			LivingEntityRenderer<T, M> renderer0 = (LivingEntityRenderer<T, M>) renderer;
-			addArmorDecorationLayer(renderer0, content, context, helper);
-		} else if (renderer instanceof PlayerRenderer renderer0) {
-			addArmorDecorationLayer(renderer0, content, context, helper);
-		}
-
-		if (renderer instanceof HorseRenderer renderer0 && content instanceof ModItems)
-			addHorseArmorDecorationLayer(renderer0, content, context, helper);
+		// Custom armor decoration layers are disabled for Fabric 1.21.4 compatibility.
 	}
 
-	public static <T extends LivingEntity, M extends HumanoidModel<T>> void addArmorDecorationLayer(LivingEntityRenderer<T, M> renderer, ModItemsProvider content, EntityRendererProvider.Context context, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper) {
-		ArmorDecorationLayer<T, M> decorationLayer;
-		if (!ARMOR_DECORATION_LAYERS.containsKey(renderer)) {
-			decorationLayer = new ArmorDecorationLayer<>(new ArmorDecorationModelSet<>(), renderer, context, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "surcoat"));
-			helper.register(decorationLayer);
-			ARMOR_DECORATION_LAYERS.put(renderer, decorationLayer);
-		} else {
-			decorationLayer = (ArmorDecorationLayer<T, M>) ARMOR_DECORATION_LAYERS.get(renderer);
-		}
-		decorationLayer.registerDecorations(content.armorDecorationItems, context);
+	public static void addArmorDecorationLayer(LivingEntityRenderer<?, ?, ?> renderer, ModItemsProvider content, EntityRendererProvider.Context context, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper) {
+		// Disabled for Fabric 1.21.4 compatibility.
 	}
 
 	public static void addHorseArmorDecorationLayer(HorseRenderer renderer, ModItemsProvider content, EntityRendererProvider.Context context, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper) {
-		HorseArmorDecorationLayer decorationLayer;
-		if (!HORSE_ARMOR_DECORATION_LAYERS.containsKey(renderer)) {
-			decorationLayer = new HorseArmorDecorationLayer(renderer, context, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "textures/entity/horse/armor/caparison.png"), "caparison");
-			helper.register(decorationLayer);
-			HORSE_ARMOR_DECORATION_LAYERS.put(renderer, decorationLayer);
-		}
+		// Disabled for Fabric 1.21.4 compatibility.
 	}
 
 	public static void setupPlatform(ModItemsProvider content)
@@ -82,20 +54,12 @@ public class ModRenderImpl
 		MedievalArmorLayer layer = new MedievalArmorLayer();
 		for (RegistrySupplier<? extends Item> supplier : content.armorItems)
 			ArmorRenderer.register(layer, supplier.get());
-
-		for (RegistrySupplier<? extends MedievalShieldItem> supplier : content.shieldItems)
-		{
-			MedievalShieldItem shield = supplier.get();
-			if (supplier.get().is3d())
-				BuiltinItemRendererRegistry.INSTANCE.register(supplier.get(), (BuiltinItemRendererRegistry.DynamicItemRenderer) shield.getRenderer());
-		}
 	}
 
 	public static void registerModelsLoadListener(ModItemsProvider content)
 	{
 		LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entitytype, renderer, helper, context) -> {
 			ModRender.loadModels(content, context);
-			addLayers(content, entitytype, renderer, helper, context);
 		});
 	}
 

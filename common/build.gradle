@@ -6,6 +6,10 @@ architectury {
     common rootProject.enabled_platforms.split(',')
 }
 
+dependencies {
+    testImplementation "junit:junit:4.13.2"
+}
+
 loom {
 }
 

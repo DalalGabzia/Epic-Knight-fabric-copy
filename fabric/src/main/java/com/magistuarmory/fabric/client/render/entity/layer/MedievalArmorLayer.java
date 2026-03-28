@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 public class MedievalArmorLayer implements ArmorRenderer
 {
    @Override
-   public void render(PoseStack pose, MultiBufferSource buffer, ItemStack stack, LivingEntity entity, EquipmentSlot slot, int i, HumanoidModel<LivingEntity> contextmodel)
+   public void render(PoseStack pose, MultiBufferSource buffer, ItemStack stack, LivingEntity entity, EquipmentSlot slot, int i, HumanoidModel<?> contextmodel)
    {
       // No Additional overlay rendering required for now.
    }
