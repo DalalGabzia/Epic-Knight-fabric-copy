@@ -6,7 +6,6 @@ import com.magistuarmory.item.ArmorDecorationItem;
 import com.magistuarmory.item.DyeableItemLike;
 import com.magistuarmory.item.IHasModelProperty;
 import com.magistuarmory.item.ModItems;
-import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.nbt.CompoundTag;
@@ -51,6 +50,4 @@ public class KnightItem extends MedievalArmorItem implements ISurcoat, DyeableIt
 	@Environment(EnvType.CLIENT)
 	public void registerModelProperty()
 	{
-		ItemPropertiesRegistry.register(this, ResourceLocation.fromNamespaceAndPath(EpicKnights.ID, "has_plume"), (stack, level, entity, i) -> this.hasPlume(stack) ? 1 : 0);
-	}
-}
+		// Model property registration moved or disabled for Fabric 1.21.4.

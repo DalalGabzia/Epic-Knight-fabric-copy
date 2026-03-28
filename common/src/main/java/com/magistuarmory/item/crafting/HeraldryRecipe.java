@@ -3,6 +3,7 @@ package com.magistuarmory.item.crafting;
 import com.magistuarmory.EpicKnights;
 import com.magistuarmory.item.MedievalShieldItem;
 import com.magistuarmory.item.armor.ISurcoat;
+import com.magistuarmory.item.armor.MedievalArmorItem;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -104,13 +105,7 @@ public class HeraldryRecipe extends CustomRecipe
     }
 
     @Override
-    public boolean canCraftInDimensions(int p_44298_, int p_44299_)
-    {
-        return p_44298_ * p_44299_ >= 2;
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer()
+    public @NotNull RecipeSerializer<? extends CustomRecipe> getSerializer()
     {
         return getSerializerInstance();
     }

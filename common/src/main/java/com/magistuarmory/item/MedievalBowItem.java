@@ -62,15 +62,6 @@ public class MedievalBowItem extends BowItem implements IHasModelProperty
     @Override
     public void registerModelProperty()
     {
-        ItemPropertiesRegistry.register(this, ResourceLocation.withDefaultNamespace("pulling"), (stack, level, entity, i) ->
-                entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-
-        ItemPropertiesRegistry.register(this, ResourceLocation.withDefaultNamespace("pull"), (stack, level, entity, i) ->
-        {
-            if (entity == null) 
-                return 0.0F;
-            else 
-                return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / this.pullTime;
-        });
+        // Model property registration disabled pending Fabric 1.21.4 API update.
     }
 }

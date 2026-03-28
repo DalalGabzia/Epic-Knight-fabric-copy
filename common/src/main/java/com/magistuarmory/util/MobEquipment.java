@@ -10,6 +10,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
+import com.magistuarmory.item.armor.MedievalArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -65,7 +66,7 @@ public class MobEquipment
             Optional<Item> itemoptional = BuiltInRegistries.ITEM.getOptional(resloc);
             if (itemoptional.isPresent())
             {
-                if (itemoptional.get() instanceof ArmorItem armor)
+                if (itemoptional.get() instanceof MedievalArmorItem armor)
                 {
                     switch (armor.getType().getSlot())
                     {
@@ -74,6 +75,11 @@ public class MobEquipment
                         case LEGS -> this.leggings.add(armor);
                         case FEET -> this.boots.add(armor);
                     }
+                    continue;
+                }
+                if (itemoptional.get() instanceof ArmorItem)
+                {
+                    System.out.println("[Epic-Knights Mob Equipment] Unsupported vanilla armor item in config: " + id);
                     continue;
                 }
                 if (itemoptional.get() instanceof ShieldItem shield)
