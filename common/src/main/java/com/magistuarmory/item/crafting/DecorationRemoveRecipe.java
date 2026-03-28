@@ -16,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.item.crafting.SpecialRecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BannerBlock;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
@@ -28,7 +27,7 @@ import java.util.List;
 
 public class DecorationRemoveRecipe extends CustomRecipe
 {
-    public static final RecipeSerializer<DecorationRemoveRecipe> SERIALIZER = new SpecialRecipeSerializer<>(DecorationRemoveRecipe::new);
+    public static final RecipeSerializer<DecorationRemoveRecipe> SERIALIZER = new CustomRecipe.Serializer<>(DecorationRemoveRecipe::new);
 
     public DecorationRemoveRecipe(CraftingBookCategory category)
     {

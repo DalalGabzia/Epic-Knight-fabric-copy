@@ -10,14 +10,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.item.crafting.SpecialRecipeSerializer;
+import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import org.jetbrains.annotations.NotNull;
 
 public class HeraldryRecipe extends CustomRecipe
 {
-    public static final RecipeSerializer<HeraldryRecipe> SERIALIZER = new SpecialRecipeSerializer<>(HeraldryRecipe::new);
+    public static final RecipeSerializer<HeraldryRecipe> SERIALIZER = new CustomRecipe.Serializer<>(HeraldryRecipe::new);
 
     public HeraldryRecipe(CraftingBookCategory category)
     {

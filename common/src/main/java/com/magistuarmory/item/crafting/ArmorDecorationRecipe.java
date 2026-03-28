@@ -10,12 +10,11 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.item.crafting.SpecialRecipeSerializer;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class ArmorDecorationRecipe extends CustomRecipe {
-    public static final RecipeSerializer<ArmorDecorationRecipe> SERIALIZER = new SpecialRecipeSerializer<>(ArmorDecorationRecipe::new);
+    public static final RecipeSerializer<ArmorDecorationRecipe> SERIALIZER = new CustomRecipe.Serializer<>(ArmorDecorationRecipe::new);
     
     public ArmorDecorationRecipe(CraftingBookCategory category) {
         super(category);
